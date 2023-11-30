@@ -28,7 +28,9 @@ alter table sales add column Vat double after cogs ;
 update sales set Vat = 0.05*cogs;
 alter table sales add column time_of_day varchar(20);
 SET SQL_SAFE_UPDATES = 0;
+
 -- -----------------------------------Feature Engineering-------------------------------------------------
+
 alter table sales add column time_of_day varchar(20);
 SET SQL_SAFE_UPDATES = 0;
 UPDATE sales
@@ -52,6 +54,7 @@ UPDATE sales
 SET Month_name= 
 monthname(date);
 -- -----------------------------------Generic-------------------------------------------------
+
 -- How many unique cities does the data have?
 select distinct(city) as "Unique Cities" from sales; 
 -- In which city is each branch?
