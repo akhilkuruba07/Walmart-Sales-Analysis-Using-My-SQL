@@ -53,13 +53,16 @@ SET SQL_SAFE_UPDATES = 0;
 UPDATE sales
 SET Month_name= 
 monthname(date);
+
 -- -----------------------------------Generic-------------------------------------------------
 
 -- How many unique cities does the data have?
 select distinct(city) as "Unique Cities" from sales; 
 -- In which city is each branch?
 select distinct(city),branch from sales;
+
 --  --------------------------------------Product-------------------------------------------------
+
 -- How many unique product lines does the data have?
 select count(distinct(product_line)) from sales;
 -- What is the most common payment method?
@@ -82,7 +85,9 @@ select branch, sum(quantity) as QTY from sales group by branch having sum(quanti
 select gender,product_line,count(gender) as Total_count from sales group by gender,product_line order by Total_count Desc;
 -- What is the average rating of each product line?
 select product_line,avg(rating) as Avg_Rating from sales group by product_line order by Avg_rating desc;
+
 -- -----------------------------------Sales-------------------------------------------------
+
 -- Number of sales made in each time of the day per weekday
 select time_of_day,count(*) As Total_Count from sales where day_name = "Sunday" group by time_of_day order by Total_Count desc;
 -- Which of the customer types brings the most revenue?
@@ -91,7 +96,9 @@ select customer_type,sum(total) as Revenue from sales group by customer_type ord
 select city,avg(vat) As Avg_Vat from sales group by city order by Avg_Vat desc;
 -- Which customer type pays the most in VAT?
 select customer_type,sum(vat) as Total_Vat from sales group by customer_type order by Total_Vat desc;
+
 -- -----------------------------------Customer-------------------------------------------------
+
 -- How many unique customer types does the data have?
 select count(distinct(customer_type)) as Unique_Customer_type from sales;
 -- How many unique payment methods does the data have?
